@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext, Fragment } from "react";
 import axios from "../../utils/axios";
-import moment from "moment";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { RequestOptionsContext } from "./DashboardWrapper";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -17,13 +18,13 @@ import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
-import CustomInput from "../../components/CustomInput/CustomInput";
+
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import DashboardNavigation from "../../components/DashboardNavigation/DashboardNavigation";
 import TaskModal from "../../routes/Dashboard/TaskModal";
 import { TicketApprovedDialog } from "./TicketApprovedDialog";
 import Ticket from "../../routes/Dashboard/Ticket";
-import { find } from "lodash";
+
 
 function Main(props) {
   const FILTER_KEYS = [
@@ -46,6 +47,9 @@ function Main(props) {
     mine: false,
     resolved: false,
     rejected: false,
+    approved: false,
+    archived: false,
+    notified: false,
   });
 
   const [ticketDetails, setTicketDetails] = useState();
@@ -123,6 +127,7 @@ function Main(props) {
   }
 
   function handleFilters({ target }) {
+    console.log("====", target.name, target.checked);
     setFilterStates({
       ...filterStates,
       [target.name]: target.checked,
@@ -221,25 +226,38 @@ function Main(props) {
               }
             />
           )}
-          <div className="filter-list">
-            <h5>
-              <FormattedMessage id="filters" />
-            </h5>
-            <div className="filters">
+          <div className="filters">
+            <div className="filters-list"> 
+              <h5 className="filters-list-title">
+                <FormattedMessage id="filters" />:
+              </h5>
               {FILTER_KEYS.map((filter) => (
-                <CustomInput
-                  labelId={filter}
-                  name={filter}
-                  modifier="secondary"
-                  layout="checkbox"
-                  checked={filterStates[filter]}
-                  onChange={handleFilters}
+                <FormControlLabel
+                  key={`${filter}-label`}
+                  control={
+                    <Checkbox
+                      key={`${filter}-chk`}
+                      size="small"
+                      color="primary"
+                      name={filter}
+                      checked={filterStates[filter]}
+                      onChange={handleFilters}
+                    />
+                  }
+                  label={filter}
                 />
               ))}
             </div>
-            <Button variant="contained" color="default" onClick={newTask}>
-              <FormattedMessage id="newTask" />
-            </Button>
+            <div className="new-ticket">
+              <Button
+                variant="contained"
+                size="small"
+                color="primary"
+                onClick={newTask}
+              >
+                <FormattedMessage id="newTask" />
+              </Button>
+            </div>
           </div>
         </Grid>
         <Grid item xs={6}>

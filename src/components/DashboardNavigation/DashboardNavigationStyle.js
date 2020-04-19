@@ -4,7 +4,7 @@ export default createGlobalStyle`
   .dashboard-nav {
     border-bottom: 1px solid ${({ theme }) => theme.primary};
     padding-bottom: .5em;
-    margin-bottom: 2em;
+    margin: 2em 0 2em 0;
     display: flex;
 
     .dashboard-nav__item {
@@ -22,6 +22,10 @@ export default createGlobalStyle`
 
     .dashboard-nav__item--active {
       color: ${({ theme }) => theme.primary};
+    }
+
+    .dashboard-nav__item:last-child {
+      margin-left: auto;
     }
   }
 `

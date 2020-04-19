@@ -1,12 +1,19 @@
-.filter-list {
+.filters {
   display: flex;
-  align-items: center;
-
-  .filters {
+  justify-content: space-between;
+  
+  &-list { 
     display: flex;
-
+   
+    &-title {
+      margin: auto;
+      margin-right: 20px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
     div {
       margin-left: 6px;
     }
   }
+ 
 }

@@ -77,21 +77,21 @@ export default function ListPopulationComponent() {
       {/*for creating category list*/}
       <Grid item xs={12} sm={6}>
         <CustomInput
-          labelId="Category name"
+          labelId="categoryName"
           name="category"
           modifier="secondary"
           value={category}
           onChange={(event) => setCategory(event.target.value)}
         />
         <CustomInput
-          labelId="Category description"
+          labelId="CategoryDescription"
           name="description"
           modifier="secondary"
           value={categoryDescription}
           onChange={(event) => setCategoryDescription(event.target.value)}
         />
         <CustomInput
-          labelId="Needs address"
+          labelId="NeedsAddress"
           name="needsAddress"
           modifier="secondary"
           layout="checkbox"
@@ -100,7 +100,7 @@ export default function ListPopulationComponent() {
         />
 
         <CustomButton
-          titleId="create a category"
+          titleId="createCategory"
           modifier="secondary"
           onClick={() => {
             createCategory();
@@ -117,7 +117,7 @@ export default function ListPopulationComponent() {
       {/*for creating area list*/}
       <Grid item xs={12} sm={5}>
         <CustomInput
-          labelId="Area name"
+          labelId="areaName"
           name="area"
           modifier="secondary"
           value={area}
@@ -125,7 +125,7 @@ export default function ListPopulationComponent() {
         />
 
         <CustomButton
-          titleId="create an area"
+          titleId="createArea"
           modifier="secondary"
           onClick={() => {
             createArea();

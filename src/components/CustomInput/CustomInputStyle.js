@@ -19,7 +19,6 @@ export default createGlobalStyle`
       .input-wrapper label {
         color: ${({ theme }) => theme.input.label.color.main};
         font-size: ${({ theme }) => theme.text_m};
-        font-weight: ${({ theme }) => theme.weight_m};
         border-radius: ${({ theme }) => theme.radius_m};
         margin-bottom: 3pt;
         cursor: pointer;}

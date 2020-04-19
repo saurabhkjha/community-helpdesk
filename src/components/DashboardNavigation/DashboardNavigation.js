@@ -11,7 +11,7 @@ export default function DashboardNavigation() {
   return (
     <Fragment>
       <DashboardNavigationStyle />
-      <div className="dashboard-nav" style={{ marginTop: "20px" }}>
+      <div className="dashboard-nav">
         <div
           className={`dashboard-nav__item ${
             isTicketsPage ? "dashboard-nav__item--active" : ""
